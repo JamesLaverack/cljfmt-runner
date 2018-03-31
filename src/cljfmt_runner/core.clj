@@ -39,10 +39,4 @@
       result
       (assoc result :diff (diff/unified-diff (.getPath file) original formatted)))))
 
-(defn classpath-dirs
-  "Returns a seq of the classpath directories"
-  []
-  (->>
-   (seq (.getURLs (java.lang.ClassLoader/getSystemClassLoader)))
-   (filter (comp directory? clojure.java.io/file))
-   ))
+
