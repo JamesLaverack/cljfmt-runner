@@ -40,3 +40,8 @@
     (if (:correct? result)
       result
       (assoc result :diff (diff/unified-diff (.getPath file) original formatted)))))
+
+(defn check-all
+  "Check all files under a directory"
+  [dir]
+  (->> dir discover (map check-file)))

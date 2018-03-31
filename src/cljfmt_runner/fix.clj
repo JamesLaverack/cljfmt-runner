@@ -3,10 +3,7 @@
 
 (defn -main
   [& args]
-  (let [checks (->> ["src" "test"]
-                    (map discover)
-                    (apply concat)
-                    (map check-file))
+  (let [checks (check-all ".")
         failed (filter #(not (:correct? %)) checks)]
     (println (str "Checked " (count checks) " file(s)."))
     (if (< 0 (count failed))
