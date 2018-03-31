@@ -13,4 +13,4 @@
       (do (println (str "Fixing " (count failed) " file(s)."))
           (doseq [{:keys [file formatted]} failed]
             (spit file formatted)))
-      (println "All files correctly formatted."))))
+      (println "All files already correctly formatted."))))
