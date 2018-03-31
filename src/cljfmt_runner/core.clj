@@ -42,6 +42,8 @@
       (assoc result :diff (diff/unified-diff (.getPath file) original formatted)))))
 
 (defn check-all
-  "Check all files under a directory"
-  [dir]
-  (->> dir discover (map check-file)))
+  "Check all files under the given directories"
+  [dirs]
+  (->> dirs
+       (mapcat discover)
+       (map check-file)))

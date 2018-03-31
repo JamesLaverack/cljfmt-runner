@@ -3,7 +3,7 @@ Cljfmt runner for native Clojure projects.
 
 ## Operation
 
-The runner detects any Clojure or Clojurescript files located in the working directory and any sub directories (e.g., `src`, `test`, etc.) when run.
+The runner detects any Clojure or Clojurescript files located in the `src` and `test` directories when run.
 
 It can be run in two modes:
 

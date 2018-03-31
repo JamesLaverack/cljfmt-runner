@@ -3,7 +3,7 @@
 
 (defn -main
   [& args]
-  (let [checks (check-all ".")
+  (let [checks (check-all ["src" "test"])
         failed (filter #(not (:correct? %)) checks)]
     (println (str "Checked " (count checks) " file(s)."))
     (if (< 0 (count failed))
