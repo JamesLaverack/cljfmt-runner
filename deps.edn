@@ -1,0 +1,6 @@
+{:paths ["src"]
+ :deps
+ {org.clojure/clojure {:mvn/version "1.9.0"}
+  cljfmt {:mvn/version "0.5.7"}
+  com.googlecode.java-diff-utils/diffutils {:mvn/version "1.2.1"}
+  }}
