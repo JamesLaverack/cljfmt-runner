@@ -21,7 +21,7 @@ Within an `:alias` block:
 ``` edn
   :lint {:extra-deps {com.jameslaverack/cljfmt-runner
                       {:git/url "https://github.com/JamesLaverack/cljfmt-runner"
-                       :sha "1c284cddb409fe2704b6e93514d0a98c9ea08a7b"}}
+                       :sha "221bb341901ea8754f40139939b318ed7344d7ed"}}
          :main-opts ["-m" "cljfmt-runner.check"]}
   :lint/fix {:main-opts ["-m" "cljfmt-runner.fix"]}
 ```
