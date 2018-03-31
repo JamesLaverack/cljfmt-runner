@@ -34,7 +34,9 @@
   [file]
   (let [original (slurp file)
         formatted (cljfmt/reformat-string original)
-        result {:correct? (= original formatted)}]
+        result {:file file
+                :correct? (= original formatted)
+                :formatted formatted}]
     (if (:correct? result)
       result
       (assoc result :diff (diff/unified-diff (.getPath file) original formatted)))))
