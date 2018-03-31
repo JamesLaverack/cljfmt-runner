@@ -40,5 +40,3 @@
     (if (:correct? result)
       result
       (assoc result :diff (diff/unified-diff (.getPath file) original formatted)))))
-
-

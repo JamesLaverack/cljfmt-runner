@@ -1,4 +1,5 @@
-(ns cljfmt-runner.fix)
+(ns cljfmt-runner.fix
+  (:require [cljfmt-runner.core :refer :all]))
 
 (defn -main
   [& args]
@@ -10,8 +11,8 @@
     (println (str "Checked " (count checks) " file(s)."))
     (if (< 0 (count failed))
       (do (println (str "Fixing " (count failed) " file(s)."))
-          (doseq [{:keys [f c]} failed]
-            (spit f c))
+          (doseq [{:keys [file formatted]} failed]
+            (spit file formatted))
           )
       (println "All files correctly formatted.")
       ))

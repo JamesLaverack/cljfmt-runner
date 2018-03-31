@@ -6,6 +6,6 @@
   }
 
  :aliases
- {:lint {:main-opts ["-m" "cljfmt-runner.check"]}}
-
+ {:lint {:main-opts ["-m" "cljfmt-runner.check"]}
+  :lint/fix {:main-opts ["-m" "cljfmt-runner.fix"]}}
  }
