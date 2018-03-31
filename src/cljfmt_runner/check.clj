@@ -16,5 +16,4 @@
           (doseq [d (map :diff failed)]
             (println (diff/colorize-diff d)))
           (System/exit 1))
-      (println "All files correctly formatted.")
-      )))
+      (println "All files correctly formatted."))))
