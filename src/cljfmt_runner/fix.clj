@@ -5,9 +5,9 @@
   [& args]
   (let [checks (check-all ["src" "test"])
         failed (filter #(not (:correct? %)) checks)]
-    (println (str "Checked " (count checks) " file(s)."))
+    (println (str "Checked " (count checks) " file(s)"))
     (if (< 0 (count failed))
-      (do (println (str "Fixing " (count failed) " file(s)."))
+      (do (println (str "Fixing " (count failed) " file(s)"))
           (doseq [{:keys [file formatted]} failed]
             (spit file formatted)))
-      (println "All files already correctly formatted."))))
+      (println "All files already correctly formatted"))))

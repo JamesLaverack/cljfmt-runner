@@ -7,10 +7,10 @@
   [& args]
   (let [checks (check-all (:dir (parse-args args)))
         failed (filter #(not (:correct? %)) checks)]
-    (println (str "Checked " (count checks) " file(s)."))
+    (println (str "Checked " (count checks) " file(s)"))
     (if (< 0 (count failed))
-      (do (println (str (count failed) " file(s) were incorrectly formatted:"))
+      (do (println (str (count failed) " file(s) were incorrectly formatted"))
           (doseq [d (map :diff failed)]
             (println (diff/colorize-diff d)))
           (System/exit 1))
-      (println "All files correctly formatted."))))
+      (println "All files correctly formatted"))))
