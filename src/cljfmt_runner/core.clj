@@ -1,5 +1,6 @@
 (ns cljfmt-runner.core
   (:require [cljfmt.core :as cljfmt]
+            [clojure.tools.cli :refer [parse-opts]]
             [cljfmt-runner.diff :as diff]
             [clojure.java.io :as io]))
 
@@ -47,3 +48,20 @@
   (->> dirs
        (mapcat discover)
        (map check-file)))
+
+(def cli-options
+  [["-d" "--dir DIR" "Include a directory to scan. Defaults to ['src' 'test']."
+    :parse-fn str
+    :assoc-fn (fn [m k v] (update-in m [k] #(conj % v)))
+    :default ["src" "test"]]])
+
+(defn parse-args
+  [args]
+  (let [args (parse-opts args cli-options)]
+    (if (:errors args)
+      (do
+        (println "Error parsing arguments")
+        (doseq [error (:errors args)]
+          (println error))
+        (System/exit 1))
+      (:options args))))
