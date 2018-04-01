@@ -1,4 +1,7 @@
 # cljfmt-runner
+
+[![CircleCI](https://circleci.com/gh/JamesLaverack/cljfmt-runner.svg?style=svg)](https://circleci.com/gh/JamesLaverack/cljfmt-runner)
+
 Cljfmt runner for native Clojure projects.
 
 ## Operation
