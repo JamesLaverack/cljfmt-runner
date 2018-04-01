@@ -1,0 +1,40 @@
+# Clojure CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-clojure/ for more details
+#
+version: 2
+jobs:
+  build:
+    docker:
+      # No official version of this image yet, pending https://github.com/Quantisan/docker-clojure/pull/44
+      - image: jameslaverack/clojure:tools-deps-alpine
+
+    working_directory: ~/repo
+
+    environment:
+      JVM_OPTS: -Xmx3200m
+
+    steps:
+      - checkout
+
+      # Download and cache dependencies
+      - restore_cache:
+          keys:
+          - v1-dependencies-{{ checksum "deps.edn" }}
+          # fallback to using the latest cache if no exact match is found
+          - v1-dependencies-
+
+      # The `-Spath` is to force clojure to fetch dependencies, the `-A:test:lint`
+      # bit puts the linting and test dependencies on the path too.
+      - run: clojure -A:test:lint -Spath
+
+      - save_cache:
+          paths:
+            - .cpcache
+          key: v1-dependencies-{{ checksum "deps.edn" }}
+
+      # Lint code
+      - run: clojure -A:lint
+
+      # run tests!
+      - run: clojure -A:test
