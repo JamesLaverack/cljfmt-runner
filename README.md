@@ -36,6 +36,8 @@ For example, using the alias setup from the example above, if you wanted to scan
 
 ## License
 
+Distributed under the Eclipse Public License either version 2.0 or (at your option) any later version.
+
 Copyright © 2018 James Laverack.
 
 Portions of this code (in particular `src/cljfmt_runner/diff.clj`) are © 2016 James Reeves and taken from https://github.com/weavejester/cljfmt
