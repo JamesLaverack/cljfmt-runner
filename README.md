@@ -2,7 +2,7 @@
 
 [![CircleCI](https://circleci.com/gh/JamesLaverack/cljfmt-runner.svg?style=svg)](https://circleci.com/gh/JamesLaverack/cljfmt-runner)
 
-Cljfmt runner for native Clojure projects.
+[Cljfmt](https://github.com/weavejester/cljfmt) runner for [native Clojure projects](https://clojure.org/reference/deps_and_cli).
 
 ## Operation
 
@@ -24,12 +24,14 @@ Within an `:alias` block:
 ``` edn
   :lint {:extra-deps {com.jameslaverack/cljfmt-runner
                       {:git/url "https://github.com/JamesLaverack/cljfmt-runner"
-                       :sha "221bb341901ea8754f40139939b318ed7344d7ed"}}
+                       :sha "51f85c9d6cc67107620749ceacd46120647fe107"}}
          :main-opts ["-m" "cljfmt-runner.check"]}
   :lint/fix {:main-opts ["-m" "cljfmt-runner.fix"]}
 ```
 
 You can then run `check` with `clj -A:lint` and `fix` with `clj -A:lint:lint/fix`. You can, of course, name these aliases whatever you want.
+
+It's advisable to find the most recent sha from this repo for latest features.
 
 ## Configuration
 
