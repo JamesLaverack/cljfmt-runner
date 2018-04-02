@@ -65,3 +65,16 @@
           (println error))
         (System/exit 1))
       (:options args))))
+
+(defn config
+  []
+  (-> (slurp "deps.edn")
+      clojure.edn/read-string
+      :cljfmt
+      (or {})))
+
+(defn search-dirs
+  "Determine the search directories, given a map of parsed arguments and a config map (from `deps.edn`)"
+  [args config]
+  (set (concat (:dir args)
+               (:dirs config))))

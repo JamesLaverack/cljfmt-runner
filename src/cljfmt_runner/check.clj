@@ -5,7 +5,8 @@
 
 (defn -main
   [& args]
-  (let [checks (check-all (:dir (parse-args args)))
+  (let [dirs (search-dirs (parse-args args) (config))
+        checks (check-all dirs)
         failed (filter #(not (:correct? %)) checks)]
     (println (str "Checked " (count checks) " file(s)"))
     (if (< 0 (count failed))

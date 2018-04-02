@@ -31,9 +31,15 @@ Within an `:alias` block:
 
 You can then run `check` with `clj -A:lint` and `fix` with `clj -A:lint:lint/fix`. You can, of course, name these aliases whatever you want.
 
-### Checking Additional Directories
+## Configuration
 
-If you want to automatically scan directories in addition to `src` and `test`, then you can specify them on the command line with the `-d` flag.
+If you want to automatically scan directories in addition to `src` and `test`, then you can specify them in a `:cljfmt` configuration block in your `deps.edn`.
+
+``` edn
+    :cljfmt {:dirs ["extra-dir"]}
+```
+
+Alternatively, you can specify extra directories on the command line with the `-d` flag.
 
 For example, using the alias setup from the example above, if you wanted to scan a `dev` directory for Clojure sources too then you could do this with `clj -A:lint -d dev`.
 
