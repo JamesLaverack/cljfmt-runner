@@ -33,10 +33,10 @@ You can then run `check` with `clj -A:lint` and `fix` with `clj -A:lint:lint/fix
 
 ## Configuration
 
-If you want to automatically scan directories in addition to `src` and `test`, then you can specify them in a `:cljfmt` configuration block in your `deps.edn`.
+If you want to automatically scan directories in addition to `src` and `test`, then you can specify them in a `cljfmt.edn` file at the top level of your project directory.
 
 ``` edn
-    :cljfmt {:dirs ["extra-dir"]}
+{:dirs ["extra-dir"]}
 ```
 
 Alternatively, you can specify extra directories on the command line with the `-d` flag.
