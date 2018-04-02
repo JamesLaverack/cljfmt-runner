@@ -68,9 +68,11 @@
 
 (defn config
   []
-  (-> (slurp "cljfmt.edn")
-      clojure.edn/read-string
-      (or {})))
+  (let [config-file (io/file "cljfmt.edn")]
+    (if (.exists config-file)
+      (-> (slurp "cljfmt.edn")
+          clojure.edn/read-string)
+      {})))
 
 (defn search-dirs
   "Determine the search directories, given a map of parsed arguments and a config map (from `cljfmt.edn`)"
