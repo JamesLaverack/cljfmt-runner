@@ -31,6 +31,15 @@ Within an `:alias` block:
 
 You can then run `check` with `clj -A:lint` and `fix` with `clj -A:lint:lint/fix`. You can, of course, name these aliases whatever you want.
 
+The following one liner also works:
+
+```clj
+clojure -Sdeps "{:deps 
+                   {com.jameslaverack/cljfmt-runner
+                      {:git/url \"https://github.com/JamesLaverack/cljfmt-runner\"
+                       :sha \"57e956856669efee854e00765ad00e1eebaace2a\"}}}" -m cljfmt-runner.check
+```
+
 It's advisable to find the most recent sha from this repo for latest features.
 
 ## Configuration
