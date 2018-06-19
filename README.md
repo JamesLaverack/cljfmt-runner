@@ -29,7 +29,9 @@ Within an `:alias` block:
   :lint/fix {:main-opts ["-m" "cljfmt-runner.fix"]}
 ```
 
-You can then run `check` with `clj -A:lint` and `fix` with `clj -A:lint:lint/fix`. You can, of course, name these aliases whatever you want.
+You can then run `check` with `clojure -A:lint` and `lint/fix` with `clojure -A:lint:lint/fix`.
+
+You can, of course, name these aliases whatever you want.
 
 The following one liner also works:
 
