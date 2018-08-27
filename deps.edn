@@ -2,7 +2,7 @@
  :deps
  {org.clojure/clojure {:mvn/version "1.9.0"}
   org.clojure/tools.cli {:mvn/version "0.3.5"}
-  cljfmt {:mvn/version "0.5.7"}
+  cljfmt {:mvn/version "0.6.0"}
   com.googlecode.java-diff-utils/diffutils {:mvn/version "1.2.1"}
   }
 
