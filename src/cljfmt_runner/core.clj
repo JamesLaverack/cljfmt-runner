@@ -2,7 +2,8 @@
   (:require [cljfmt.core :as cljfmt]
             [clojure.tools.cli :refer [parse-opts]]
             [cljfmt-runner.diff :as diff]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io]
+            [clojure.string :as str]))
 
 (defn file?
   "Determine if the given java.io.File is a file (as opposed to a directory)."
@@ -18,8 +19,8 @@
   "Determine if a the given file is a Clojure or Clojurescript source file."
   [file]
   (let [name (.getName file)]
-    (or (.endsWith name ".clj")
-        (.endsWith name ".cljs"))))
+    (or (str/ends-with? name ".clj")
+        (str/ends-with? name ".cljs"))))
 
 (defn discover
   "Discover all Clojure source files in a given directory"
