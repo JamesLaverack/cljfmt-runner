@@ -21,6 +21,7 @@
   (let [name (.getName file)]
     (or (str/ends-with? name ".clj")
         (str/ends-with? name ".cljs")
+        (str/ends-with? name ".cljc")
         (str/ends-with? name ".edn"))))
 
 (defn discover

@@ -15,7 +15,9 @@
   (testing "Test that a ClojureScript source file can be detected"
     (is (rcore/clojure-source? (io/file (str example-root "src/example/hello.cljs")))))
   (testing "Test that an EDN source file can be detected"
-    (is (rcore/clojure-source? (io/file (str example-root "deps.edn"))))))
+    (is (rcore/clojure-source? (io/file (str example-root "deps.edn")))))
+  (testing "Test that an cljc source file can be detected"
+    (is (rcore/clojure-source? (io/file (str example-root "src/example/hello.cljc"))))))
 
 (deftest all-files-test
   ;; Because we can't change the REPL's working directory this is a test over the
