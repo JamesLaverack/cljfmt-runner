@@ -2,7 +2,8 @@
   (:require [cljfmt.core :as cljfmt]
             [clojure.tools.cli :refer [parse-opts]]
             [cljfmt-runner.diff :as diff]
-            [clojure.java.io :as io]))
+            [clojure.java.io :as io]
+            [clojure.string :as str]))
 
 (defn file?
   "Determine if the given java.io.File is a file (as opposed to a directory)."
@@ -18,8 +19,10 @@
   "Determine if a the given file is a Clojure or Clojurescript source file."
   [file]
   (let [name (.getName file)]
-    (or (.endsWith name ".clj")
-        (.endsWith name ".cljs"))))
+    (or (str/ends-with? name ".clj")
+        (str/ends-with? name ".cljs")
+        (str/ends-with? name ".cljc")
+        (str/ends-with? name ".edn"))))
 
 (defn discover
   "Discover all Clojure source files in a given directory"
@@ -42,12 +45,23 @@
       result
       (assoc result :diff (diff/unified-diff (.getPath file) original formatted)))))
 
-(defn check-all
-  "Check all files under the given directories"
+(defn- single-files
+  "A few files exist at the top level that we want to check, but we don't
+  want to scan the entire top level."
+  []
+  (filter file? [(io/file "deps.edn")
+                 (io/file "cljfmt.edn")]))
+
+(defn discover-files
   [dirs]
   (->> dirs
        (mapcat discover)
-       (map check-file)))
+       (concat (single-files))))
+
+(defn check-all
+  "Check all files under the given directories"
+  [dirs]
+  (map check-file (discover-files dirs)))
 
 (def cli-options
   [["-d" "--dir DIR" "Include a directory to scan. Defaults to ['src' 'test']."
