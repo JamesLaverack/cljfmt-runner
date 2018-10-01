@@ -44,10 +44,18 @@
       result
       (assoc result :diff (diff/unified-diff (.getPath file) original formatted)))))
 
+(defn- single-files
+  "A few files exist at the top level that we want to check, but we don't
+  want to scan the entire top level."
+  []
+  (filter file? [(io/file "deps.edn")
+                 (io/file "cljfmt.edn")]))
+
 (defn discover-files
   [dirs]
   (->> dirs
-       (mapcat discover)))
+       (mapcat discover)
+       (concat (single-files))))
 
 (defn check-all
   "Check all files under the given directories"

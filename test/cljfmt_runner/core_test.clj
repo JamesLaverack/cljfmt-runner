@@ -20,6 +20,9 @@
 (deftest all-files-test
   ;; Because we can't change the REPL's working directory this is a test over the
   ;; main project's files
-  (let [files (rcore/discover-files [(io/file "src")])]
+  (let [files (rcore/discover-files [(io/file "src")])
+        filepaths (map #(.getPath %) files)]
     (testing "Clojure source files found in subdirectory"
-      (is (some #{"src/cljfmt_runner/core.clj"} (map #(.getPath %) files))))))
+      (is (some #{"src/cljfmt_runner/core.clj"} filepaths)))
+    (testing "deps.edn file found"
+      (is (some #{"deps.edn"} filepaths)))))
