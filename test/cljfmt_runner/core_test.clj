@@ -16,3 +16,10 @@
     (is (rcore/clojure-source? (io/file (str example-root "src/example/hello.cljs")))))
   (testing "Test that an EDN source file can be detected"
     (is (rcore/clojure-source? (io/file (str example-root "deps.edn"))))))
+
+(deftest all-files-test
+  ;; Because we can't change the REPL's working directory this is a test over the
+  ;; main project's files
+  (let [files (rcore/discover-files [(io/file "src")])]
+    (testing "Clojure source files found in subdirectory"
+      (is (some #{"src/cljfmt_runner/core.clj"} (map #(.getPath %) files))))))

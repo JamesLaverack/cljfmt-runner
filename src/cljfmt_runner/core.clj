@@ -44,12 +44,15 @@
       result
       (assoc result :diff (diff/unified-diff (.getPath file) original formatted)))))
 
+(defn discover-files
+  [dirs]
+  (->> dirs
+       (mapcat discover)))
+
 (defn check-all
   "Check all files under the given directories"
   [dirs]
-  (->> dirs
-       (mapcat discover)
-       (map check-file)))
+  (map check-file (discover-files dirs)))
 
 (def cli-options
   [["-d" "--dir DIR" "Include a directory to scan. Defaults to ['src' 'test']."
