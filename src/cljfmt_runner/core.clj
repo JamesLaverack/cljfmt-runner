@@ -20,7 +20,8 @@
   [file]
   (let [name (.getName file)]
     (or (str/ends-with? name ".clj")
-        (str/ends-with? name ".cljs"))))
+        (str/ends-with? name ".cljs")
+        (str/ends-with? name ".edn"))))
 
 (defn discover
   "Discover all Clojure source files in a given directory"
