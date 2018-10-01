@@ -10,4 +10,6 @@
   (testing "Test that a file can be detected"
     (is (rcore/file? (clojure.java.io/file (str example-root "deps.edn")))))
   (testing "Test that a Clojure source file can be detected"
-    (is (rcore/clojure-source? (clojure.java.io/file (str example-root "src/example/hello.clj"))))))
+    (is (rcore/clojure-source? (clojure.java.io/file (str example-root "src/example/hello.clj")))))
+  (testing "Test that a ClojureScript source file can be detected"
+    (is (rcore/clojure-source? (clojure.java.io/file (str example-root "src/example/hello.cljs"))))))
