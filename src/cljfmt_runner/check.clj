@@ -1,7 +1,9 @@
 (ns cljfmt-runner.check
   (:require [cljfmt.core :as cljfmt]
             [cljfmt-runner.core :refer :all]
-            [cljfmt-runner.diff :as diff]))
+            [cljfmt-runner.diff :as diff])
+  ;; Required for compilation to a “native image” executable via GraalVM.
+  (:gen-class))
 
 (defn -main
   [& args]

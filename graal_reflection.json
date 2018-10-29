@@ -1,0 +1,10 @@
+[
+    {
+        "name": "java.io.File",
+        "allDeclaredConstructors": true,
+        "allPublicConstructors": true,
+        "allDeclaredMethods": true,
+        "allPublicMethods": true,
+        "allPublicFields": true
+    }
+]

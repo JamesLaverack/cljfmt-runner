@@ -56,6 +56,27 @@ Alternatively, you can specify extra directories on the command line with the `-
 
 For example, using the alias setup from the example above, if you wanted to scan a `dev` directory for Clojure sources too then you could do this with `clj -A:lint -d dev`.
 
+## Building a Native Image/Executable
+
+cljfmt is a great tool, but it’s historically been not a great fit for situations wherein latency is crucial, such as in a [git pre-commit hook](https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks). This is [probably](https://clojureverse.org/t/tricks-to-make-clojure-startup-time-faster/1176/13?u=avi) because it and its libraries are not currently [AOT-compiled](https://en.wikipedia.org/wiki/Ahead-of-time_compilation).
+
+To address this, this project currently supports compilation to a native image/executable via [GraalVM](https://www.graalvm.org/) and [clj.native-image](https://github.com/taylorwood/clj.native-image). (Currently only the `check` entrypoint works; there are some outstanding issues with compiling the `fix` entrypoint. This isn’t ideal but the `check` entrypoint should be sufficient for use cases such as git pre-commit hooks.)
+
+You can make your own native executable like so:
+
+1. Clone this project
+1. Download GraalVM and extract it somewhere on your system
+1. Run this in your terminal:
+   ```shell
+   export GRAALVM_HOME=/path/to/the/home/dir/within/the/graalvm/dir
+   cd /path/to/wherever/you/cloned/this/project
+   clojure -A:native-image-check
+   ```
+
+If that worked, you should see in the current dir a new file: `cljfmt-check`. Move that file to wherever you wish, and it should get the job done.
+
+(As a suggestion, some of us do this: `mv cljfmt-check ~/bin/cljfmt` — the shorter name is just more convenient.)
+
 ## License
 
 Distributed under the Eclipse Public License either version 2.0 or (at your option) any later version.
@@ -63,4 +84,3 @@ Distributed under the Eclipse Public License either version 2.0 or (at your opti
 Copyright © 2018 James Laverack.
 
 Portions of this code (in particular `src/cljfmt_runner/diff.clj`) are © 2016 James Reeves and taken from https://github.com/weavejester/cljfmt
-

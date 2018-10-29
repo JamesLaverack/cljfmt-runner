@@ -1,5 +1,7 @@
 (ns cljfmt-runner.fix
-  (:require [cljfmt-runner.core :refer :all]))
+  (:require [cljfmt-runner.core :refer :all])
+  ;; Required for compilation to a “native image” executable via GraalVM.
+  (:gen-class))
 
 (defn -main
   [& args]
