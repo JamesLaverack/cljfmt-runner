@@ -24,7 +24,7 @@ Within an `:alias` block:
 ``` edn
   :lint {:extra-deps {com.jameslaverack/cljfmt-runner
                       {:git/url "https://github.com/JamesLaverack/cljfmt-runner"
-                       :sha "51f85c9d6cc67107620749ceacd46120647fe107"}}
+                       :sha "97960e9a6464935534b5a6bab529e063d0027128"}}
          :main-opts ["-m" "cljfmt-runner.check"]}
   :lint/fix {:main-opts ["-m" "cljfmt-runner.fix"]}
 ```
@@ -39,7 +39,7 @@ The following one liner also works:
 clojure -Sdeps "{:deps 
                    {com.jameslaverack/cljfmt-runner
                       {:git/url \"https://github.com/JamesLaverack/cljfmt-runner\"
-                       :sha \"57e956856669efee854e00765ad00e1eebaace2a\"}}}" -m cljfmt-runner.check
+                       :sha \"97960e9a6464935534b5a6bab529e063d0027128\"}}}" -m cljfmt-runner.check
 ```
 
 It's advisable to find the most recent sha from this repo for latest features.
