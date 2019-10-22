@@ -1,6 +1,6 @@
 # cljfmt-runner
 
-[![CircleCI](https://circleci.com/gh/JamesLaverack/cljfmt-runner.svg?style=svg)](https://circleci.com/gh/JamesLaverack/cljfmt-runner)
+[![CircleCI](https://circleci.com/gh/JamesLaverack/cljfmt-runner.svg?style=svg)](https://circleci.com/gh/JamesLaverack/cljfmt-runner) [![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
 [Cljfmt](https://github.com/weavejester/cljfmt) runner for [native Clojure projects](https://clojure.org/reference/deps_and_cli).
 
