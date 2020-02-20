@@ -35,9 +35,9 @@
 
 (defn check-file
   "Check a single file for formatting."
-  [file]
+  [file config]
   (let [original (slurp file)
-        formatted (cljfmt/reformat-string original)
+        formatted (cljfmt/reformat-string original config)
         result {:file file
                 :correct? (= original formatted)
                 :formatted formatted}]
@@ -60,8 +60,8 @@
 
 (defn check-all
   "Check all files under the given directories"
-  [dirs]
-  (map check-file (discover-files dirs)))
+  [dirs config]
+  (map #(check-file % config) (discover-files dirs)))
 
 (def cli-options
   [["-d" "--dir DIR" "Include a directory to scan. Defaults to ['src' 'test']."
