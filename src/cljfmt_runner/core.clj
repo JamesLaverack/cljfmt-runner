@@ -85,7 +85,8 @@
   (let [config-file (io/file "cljfmt.edn")]
     (if (.exists config-file)
       (-> (slurp "cljfmt.edn")
-          clojure.edn/read-string)
+          clojure.edn/read-string
+          (update :indents (fn [indents] (merge default-indents indents))))
       {})))
 
 (defn search-dirs
