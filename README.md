@@ -4,6 +4,8 @@
 
 [Cljfmt](https://github.com/weavejester/cljfmt) runner for [native Clojure projects](https://clojure.org/reference/deps_and_cli).
 
+**This project is unmantained and archived. If you still need this functionality, please refer to one of the many fabulious [forks](https://github.com/JamesLaverack/cljfmt-runner/network/members).**
+
 ## Operation
 
 The runner detects any Clojure or Clojurescript files located in the `src` and `test` directories when run.
